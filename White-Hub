@@ -1,0 +1,75 @@
+-- Импортируем библиотеку Orion
+local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Orion/main/source"))()
+
+-- Ссылка на ключ (меняем эту переменную на нужную)
+local validKey = "1" -- Тут укажи правильный ключ
+
+-- Функция для запуска кода по ссылке
+local function loadWhiteHubCode()
+    local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+   local Window = OrionLib:MakeWindow({Name = "White Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+end
+
+-- Создаем окно с названием "White Hub - Key"
+local Window = OrionLib:MakeWindow({Name = "White Hub - Key", HidePremium = false, SaveConfig = true, ConfigFolder = "WhiteHub"})
+
+-- Создаем таб "Key"
+local Tab = Window:MakeTab({
+    Name = "Key",
+    Icon = "rbxassetid://4483345998", -- Можешь изменить иконку по желанию
+    PremiumOnly = false
+})
+
+-- Переменная для хранения введенного ключа
+local userInputKey = ""
+
+-- Текстбокс для ввода ключа
+Tab:AddTextbox({
+    Name = "Enter Key",
+    Default = "",
+    TextDisappear = true,
+    Callback = function(value)
+        userInputKey = value
+    end
+})
+
+-- Кнопка CheckKey для проверки ключа
+Tab:AddButton({
+    Name = "Check Key",
+    Callback = function()
+        if userInputKey == validKey then
+            OrionLib:MakeNotification({
+                Name = "Success",
+                Content = "Key is correct!",
+                Image = "rbxassetid://4483345998", -- Иконка уведомления
+                Time = 5
+            })
+            OrionLib:Destroy() -- Закрыть окно
+            loadWhiteHubCode() -- Запуск кода из WhiteHub
+        else
+            OrionLib:MakeNotification({
+                Name = "Error",
+                Content = "Invalid Key, please try again.",
+                Image = "rbxassetid://4483345998", -- Иконка уведомления
+                Time = 5
+            })
+        end
+    end
+})
+
+-- Кнопка для копирования ссылки
+Tab:AddButton({
+    Name = "Copy Link",
+    Callback = function()
+        setclipboard("https://github.com/cecemonr/WhiteHub/blob/main/WhiteHub.txt")
+        OrionLib:MakeNotification({
+            Name = "Link Copied",
+            Content = "Link copied to clipboard!",
+            Image = "rbxassetid://4483345998", -- Иконка уведомления
+            Time = 5
+        })
+    end
+})
+
+OrionLib:Init()
