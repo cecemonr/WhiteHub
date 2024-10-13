@@ -50,6 +50,8 @@ Tab:AddButton({
     end
 })
 
+print("tst")
+
 Tab:AddButton({
     Name = "Copy Link",
     Callback = function()
