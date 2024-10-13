@@ -3,9 +3,7 @@ local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/shle
 local validKey = "1"
 
 local function loadWhiteHubCode()
-   local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-
-   local Window = OrionLib:MakeWindow({Name = "White Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/cecemonr/WhiteHub/refs/heads/main/White-Hub.lua"))()
 end
 
 local Window = OrionLib:MakeWindow({Name = "White Hub - Key", HidePremium = false, SaveConfig = true, ConfigFolder = "WhiteHub"})
