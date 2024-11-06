@@ -1,6 +1,6 @@
 local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Orion/main/source"))()
 
-local validKey = "1"
+local validKey = "https://pastebin.com/raw/uiP40nsG"
 
 local function loadWhiteHubCode()
    loadstring(game:HttpGet("https://raw.githubusercontent.com/cecemonr/WhiteHub/refs/heads/main/White-Hub.lua"))()
