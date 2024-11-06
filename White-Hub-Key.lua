@@ -1,7 +1,7 @@
 local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Orion/main/source"))()
 
 -- Ссылка на Pastebin с ключом
-local keyUrl = "https://pastebin.com/raw/ВАШ_ID"
+local keyUrl = "https://pastebin.com/raw/uiP40nsG"
 
 -- Функция для загрузки кода WhiteHub
 local function loadWhiteHubCode()
