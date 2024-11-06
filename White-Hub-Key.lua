@@ -32,7 +32,7 @@ local function checkKey(callback)
     else
         OrionLib:MakeNotification({
             Name = "Error",
-            Content = "Не удалось подключиться к серверу.",
+            Content = "Failed to connect to the server!",
             Image = "rbxassetid://4483345998",
             Time = 5
         })
@@ -46,7 +46,7 @@ Tab:AddButton({
             if isValid then
                 OrionLib:MakeNotification({
                     Name = "Success",
-                    Content = "Ключ верен!",
+                    Content = "The key is correct!",
                     Image = "rbxassetid://4483345998",
                     Time = 5
                 })
@@ -55,7 +55,7 @@ Tab:AddButton({
             else
                 OrionLib:MakeNotification({
                     Name = "Error",
-                    Content = "Неправильный ключ, попробуйте снова.",
+                    Content = "Incorrect key!",
                     Image = "rbxassetid://4483345998",
                     Time = 5
                 })
@@ -70,7 +70,7 @@ Tab:AddButton({
         setclipboard("https://github.com/cecemonr/WhiteHub/blob/main/WhiteHub.txt")
         OrionLib:MakeNotification({
             Name = "Link Copied",
-            Content = "Ссылка скопирована в буфер обмена!",
+            Content = "Copied!",
             Image = "rbxassetid://4483345998",
             Time = 5
         })
