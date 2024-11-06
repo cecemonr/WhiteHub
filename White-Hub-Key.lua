@@ -2,7 +2,7 @@ local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/shle
 
 -- Ссылка на Pastebin с ключом
 local keyUrl = "https://pastebin.com/raw/uiP40nsG"
---te
+--test
 -- Функция для загрузки кода WhiteHub
 local function loadWhiteHubCode()
    loadstring(game:HttpGet("https://raw.githubusercontent.com/cecemonr/WhiteHub/refs/heads/main/White-Hub.lua"))()
