@@ -1,11 +1,14 @@
 local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Orion/main/source"))()
 
-local validKey = "https://pastebin.com/raw/uiP40nsG"
+-- Ссылка на Pastebin с ключом
+local keyUrl = "https://pastebin.com/raw/ВАШ_ID"
 
+-- Функция для загрузки кода WhiteHub
 local function loadWhiteHubCode()
    loadstring(game:HttpGet("https://raw.githubusercontent.com/cecemonr/WhiteHub/refs/heads/main/White-Hub.lua"))()
 end
 
+-- Создаем окно для ввода ключа
 local Window = OrionLib:MakeWindow({Name = "White Hub - Key", HidePremium = false, SaveConfig = true, ConfigFolder = "WhiteHub"})
 
 local Tab = Window:MakeTab({
@@ -16,6 +19,7 @@ local Tab = Window:MakeTab({
 
 local userInputKey = ""
 
+-- Добавляем поле для ввода ключа
 Tab:AddTextbox({
     Name = "Enter Key",
     Default = "",
@@ -25,38 +29,55 @@ Tab:AddTextbox({
     end
 })
 
+-- Проверка ключа на сервере
+local function checkKey(callback)
+    local response = game:HttpGet(keyUrl)
+    if response then
+        callback(userInputKey == response)
+    else
+        OrionLib:MakeNotification({
+            Name = "Error",
+            Content = "Не удалось подключиться к серверу.",
+            Image = "rbxassetid://4483345998",
+            Time = 5
+        })
+    end
+end
+
+-- Добавляем кнопку для проверки ключа
 Tab:AddButton({
     Name = "Check Key",
     Callback = function()
-        if userInputKey == validKey then
-            OrionLib:MakeNotification({
-                Name = "Success",
-                Content = "Key is correct!",
-                Image = "rbxassetid://4483345998",
-                Time = 5
-            })
-            OrionLib:Destroy()
-            loadWhiteHubCode()
-        else
-            OrionLib:MakeNotification({
-                Name = "Error",
-                Content = "Invalid Key, please try again.",
-                Image = "rbxassetid://4483345998",
-                Time = 5
-            })
-        end
+        checkKey(function(isValid)
+            if isValid then
+                OrionLib:MakeNotification({
+                    Name = "Success",
+                    Content = "Ключ верен!",
+                    Image = "rbxassetid://4483345998",
+                    Time = 5
+                })
+                OrionLib:Destroy()
+                loadWhiteHubCode()
+            else
+                OrionLib:MakeNotification({
+                    Name = "Error",
+                    Content = "Неправильный ключ, попробуйте снова.",
+                    Image = "rbxassetid://4483345998",
+                    Time = 5
+                })
+            end
+        end)
     end
 })
 
-print("tst")
-
+-- Кнопка для копирования ссылки
 Tab:AddButton({
     Name = "Copy Link",
     Callback = function()
         setclipboard("https://github.com/cecemonr/WhiteHub/blob/main/WhiteHub.txt")
         OrionLib:MakeNotification({
             Name = "Link Copied",
-            Content = "Link copied to clipboard!",
+            Content = "Ссылка скопирована в буфер обмена!",
             Image = "rbxassetid://4483345998",
             Time = 5
         })
